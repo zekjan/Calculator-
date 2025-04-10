@@ -1,10 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Zoo Calculator</title>
+  <title>Zoo Roulette Calculator</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    input, button { padding: 10px; margin: 5px; font-size: 16px; }
+  </style>
 </head>
 <body>
-  <h1>Zoo Calculator</h1>
-  <p>Work in progress...</p>
+  <h2>Zoo Roulette Calculator</h2>
+  <label>Current Target:</label>
+  <input type="number" id="currentTarget"><br>
+  <label>Speed (4x or 5x):</label>
+  <input type="number" id="speed"><br>
+  <button onclick="predict()">Predict Next</button>
+  <h3 id="result"></h3>
+
+  <script>
+    function predict() {
+      let target = parseInt(document.getElementById("currentTarget").value);
+      let speed = parseInt(document.getElementById("speed").value);
+      let step = speed === 4 ? 16 : (speed === 5 ? 20 : 0);
+      let result = (target + step) % 28;
+      document.getElementById("result").innerText = "Next target: " + result;
+    }
+  </script>
 </body>
 </html>
